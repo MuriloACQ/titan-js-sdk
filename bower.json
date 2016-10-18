@@ -1,0 +1,22 @@
+{
+  "name": "titan-js-sdk",
+  "description": "SDK module to integrate Titan API using browserify.",
+  "main": "dist/titan-sdj.js",
+  "authors": [
+    "Marcos <tio.makin@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MuriloACQ/titan-js-sdk",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "titan-js-sdk": {
+      "main": "dist/titan-sdk.js"
+    }
+  }
+}
