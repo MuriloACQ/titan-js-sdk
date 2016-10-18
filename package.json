@@ -1,0 +1,15 @@
+{
+  "name": "titanjs-sdk",
+  "version": "0.0.1",
+  "description": "SDK module to integrate Titan API using browserify.",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.75.0",
+    "request-promise": "^4.1.1",
+    "uniq": "^1.0.1"
+  },
+  "files": [
+    "dist"
+  ]
+}
