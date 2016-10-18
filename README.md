@@ -14,6 +14,7 @@ These are the current implemented methos to use:
     - setAccessToken
     - removeAccessToken
     - authenticate
+    - refreshToken
     - getFullBalance
     - getDevice
     - getDeviceReports

@@ -4,6 +4,7 @@ var RequestConfig = require('../config/request.config');
 
 var endpoint = require('../config/env.config').endpoint;
 var authPath = 'auth';
+var refreshPath = 'refresh';
 function AuthService() {
 }
 
@@ -17,6 +18,22 @@ function AuthService() {
  */
 AuthService.prototype.auth = function (credentials, saveToken) {
     return req(RequestConfig.generateOptions(RequestConfig.POST, endpoint + authPath, JSON.stringify(credentials)))
+        .then(function (response) {
+            var parsedResponse = (JSON.parse(response));
+            if (saveToken) {
+                RequestConfig.setAccessToken(parsedResponse.accessToken);
+            }
+            return parsedResponse;
+        });
+};
+
+AuthService.prototype.refreshToken = function (tokens, saveToken) {
+    var customHeaders = {
+        'Content-Type' : 'application/json',
+        'x-token' : tokens['accessToken'],
+        'refresh-token' : tokens['refreshToken']
+    };
+    return req(RequestConfig.generateOptions(RequestConfig.POST, endpoint + refreshPath, null, customHeaders))
         .then(function (response) {
             var parsedResponse = (JSON.parse(response));
             if (saveToken) {

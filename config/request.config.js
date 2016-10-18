@@ -10,7 +10,9 @@ function setAccessToken(aToken) {
 function removeAccessToken() {
     accessToken = null;
 }
-function generateOptions(methodType, url, body) {
+
+
+function generateOptions(methodType, url, body, customHeaders) {
     var headers = {};
     headers['Content-Type'] = 'application/json';
     if (accessToken) {
@@ -19,7 +21,7 @@ function generateOptions(methodType, url, body) {
     return {
         method: methodType,
         uri: url,
-        headers: headers,
+        headers: customHeaders ? customHeaders : headers,
         body: body
     }
 }

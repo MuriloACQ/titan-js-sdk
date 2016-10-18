@@ -28,6 +28,7 @@
     TitanAPI.prototype.removeAccessToken = RequestConfig.removeAccessToken;
 
     TitanAPI.prototype.authenticate = authService.auth;
+    TitanAPI.prototype.refreshToken = authService.refreshToken;
 
     TitanAPI.prototype.getFullBalance = balanceService.getFullBalance;
 
