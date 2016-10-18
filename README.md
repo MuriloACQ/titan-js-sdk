@@ -42,6 +42,7 @@ TitanAPI.authenticate({
 
 ## (Optional) Build your own dist:
     - run npm install.
+    - Install browseify: npm install -g browserify
     - Do your changes.
     - Run the following command : browserify index.js -o dist/titan-sdk.js
 
