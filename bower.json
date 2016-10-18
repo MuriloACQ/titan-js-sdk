@@ -13,10 +13,5 @@
     "bower_components",
     "test",
     "tests"
-  ],
-  "overrides": {
-    "titan-js-sdk": {
-      "main": "dist/titan-sdk.js"
-    }
-  }
+  ]
 }
