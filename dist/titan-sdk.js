@@ -70602,6 +70602,7 @@ AuthService.prototype.auth = function (credentials, saveToken) {
             return parsedResponse;
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 
