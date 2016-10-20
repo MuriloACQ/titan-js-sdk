@@ -3,16 +3,18 @@ var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 
 var endpoint = require('../config/env.config').endpoint;
-var smsPath = 'v2/sms';
+var sendSmsPath = 'v2/sms';
+
 function SMSService() {
 }
+
 
 function send(smsInfo) {
     return $http.post(endpoint, smsInfo);
 }
 
 SMSService.prototype.sendSMS = function(smsInfo){
-    var smsEndpoint = endpoint + smsPath;
+    var smsEndpoint = endpoint + sendSmsPath;
 
     return req(RequestConfig.generateOptions(RequestConfig.POST, smsEndpoint, smsInfo))
         .then(function (response) {

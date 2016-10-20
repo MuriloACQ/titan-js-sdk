@@ -11,6 +11,10 @@ function removeAccessToken() {
     accessToken = null;
 }
 
+function getAccessToken() {
+    return accessToken;
+}
+
 
 function generateOptions(methodType, url, body, customHeaders) {
     var headers = {};
@@ -30,6 +34,7 @@ var PUT = 'PUT';
 var GET = 'GET';
 
 module.exports.setAccessToken = setAccessToken;
+module.exports.getAccessToken = getAccessToken;
 module.exports.removeAccessToken = removeAccessToken;
 module.exports.POST = POST;
 module.exports.PUT = PUT;

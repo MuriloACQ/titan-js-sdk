@@ -26,6 +26,7 @@
 
     TitanAPI.prototype.setAccessToken = RequestConfig.setAccessToken;
     TitanAPI.prototype.removeAccessToken = RequestConfig.removeAccessToken;
+    TitanAPI.prototype.getAccessToken = RequestConfig.getAccessToken;
 
     TitanAPI.prototype.authenticate = authService.auth;
     TitanAPI.prototype.refreshToken = authService.refreshToken;
