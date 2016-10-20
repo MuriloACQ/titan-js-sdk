@@ -16,6 +16,7 @@ PaymentService.prototype.createPayment = function (paymentInfo) {
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 

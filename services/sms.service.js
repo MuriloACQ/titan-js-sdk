@@ -8,11 +8,6 @@ var sendSmsPath = 'v2/sms';
 function SMSService() {
 }
 
-
-function send(smsInfo) {
-    return $http.post(endpoint, smsInfo);
-}
-
 SMSService.prototype.sendSMS = function(smsInfo){
     var smsEndpoint = endpoint + sendSmsPath;
 
@@ -21,6 +16,7 @@ SMSService.prototype.sendSMS = function(smsInfo){
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 

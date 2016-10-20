@@ -15,6 +15,7 @@ UserService.prototype.createAccount = function(account) {
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 
@@ -26,6 +27,7 @@ UserService.prototype.createUser =function(userInfo){
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 
@@ -36,6 +38,7 @@ UserService.prototype.getUser = function(userId){
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 

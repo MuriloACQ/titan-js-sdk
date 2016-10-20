@@ -15,6 +15,7 @@ BalanceService.prototype.getFullBalance = function (deviceId) {
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 

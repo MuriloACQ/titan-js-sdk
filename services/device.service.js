@@ -8,33 +8,36 @@ var devicesPath = 'devices';
 function DeviceService() {
 }
 
-DeviceService.prototype.getDevice = function(deviceId) {
+DeviceService.prototype.getDevice = function (deviceId) {
     var deviceEndpoint = endpoint + devicesPath + '/' + deviceId;
     return req(RequestConfig.generateOptions(RequestConfig.GET, deviceEndpoint))
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 
-DeviceService.prototype.createDevice = function(deviceId, deviceInfo) {
+DeviceService.prototype.createDevice = function (deviceId, deviceInfo) {
     var deviceEndpoint = endpoint + devicesPath + '/' + deviceId;
     return req(RequestConfig.generateOptions(RequestConfig.PUT, deviceEndpoint, deviceInfo))
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 
-DeviceService.prototype.getDeviceReports = function(deviceId) {
+DeviceService.prototype.getDeviceReports = function (deviceId) {
     var extractEndpoint = endpoint + devicesPath + '/' + deviceId + '/sms';
     return req(RequestConfig.generateOptions(RequestConfig.GET, extractEndpoint))
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 

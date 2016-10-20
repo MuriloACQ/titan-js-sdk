@@ -45,6 +45,7 @@ AuthService.prototype.refreshToken = function (tokens, saveToken) {
             return parsedResponse;
         }, function (err) {
             Intercecptor.callInterceptor(err);
+            throw err;
         });
 };
 
