@@ -41,6 +41,16 @@ TitanAPI.authenticate({
     });
 ```
 
+## Error Interceptor
+You can add an error interceptor for our http requests. In a sample way to test you can add this code in your js project.
+
+```
+    //you must add the err parameter.
+    TitanAPI.setErrorInterceptor(function(err){
+        console.log(err);
+    });
+```
+
 ## (Optional) Build your own dist:
     - run npm install.
     - Install browseify: npm install -g browserify

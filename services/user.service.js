@@ -1,7 +1,7 @@
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
-
+var Interceptor = require('../config/interceptor.config');
 var endpoint = require('../config/env.config').endpoint;
 var userPath = 'userId';
 var accountPath = 'accounts';
@@ -13,6 +13,8 @@ UserService.prototype.createAccount = function(account) {
     return req(RequestConfig.generateOptions(RequestConfig.POST, accountEndpoint, account))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 
@@ -22,6 +24,8 @@ UserService.prototype.createUser =function(userInfo){
     return req(RequestConfig.generateOptions(RequestConfig.POST, userEndpoint, userInfo))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 
@@ -30,6 +34,8 @@ UserService.prototype.getUser = function(userId){
     return req(RequestConfig.generateOptions(RequestConfig.GET, userEndpoint))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 

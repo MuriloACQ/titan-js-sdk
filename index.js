@@ -7,15 +7,16 @@
         UserService = require('./services/user.service'),
         PaymentService = require('./services/payment.service'),
         SMSService = require('./services/sms.service'),
-        RequestConfig = require('./config/request.config');
+        RequestConfig = require('./config/request.config'),
+        Interceptor = require('./config/interceptor.config');
 
     var authService = new AuthService(),
         balanceService = new BalanceService(),
         deviceService = new DeviceService(),
         userService = new UserService(),
         paymentService = new PaymentService(),
-        smsService = new SMSService();
-
+        smsService = new SMSService()
+;
     function TitanAPI() {
 
     }
@@ -23,6 +24,10 @@
     TitanAPI.prototype.helloWorld = function () {
         console.log('Hello World');
     };
+
+    TitanAPI.prototype.setErrorInterceptor = Interceptor.setErrorInterceptor;
+    TitanAPI.prototype.getErrorInterceptor = Interceptor.getErrorInterceptor;
+    TitanAPI.prototype.callInterceptor = Interceptor.callInterceptor;
 
     TitanAPI.prototype.setAccessToken = RequestConfig.setAccessToken;
     TitanAPI.prototype.removeAccessToken = RequestConfig.removeAccessToken;
@@ -44,6 +49,8 @@
     TitanAPI.prototype.createPayment = paymentService.createPayment;
 
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
+
+
 
 
     window.TitanAPI = new TitanAPI();

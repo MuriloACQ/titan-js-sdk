@@ -1,6 +1,7 @@
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
+var Interceptor = require('../config/interceptor.config');
 
 var endpoint = require('../config/env.config').endpoint;
 var devicesPath = 'devices';
@@ -12,6 +13,8 @@ DeviceService.prototype.getDevice = function(deviceId) {
     return req(RequestConfig.generateOptions(RequestConfig.GET, deviceEndpoint))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 
@@ -20,6 +23,8 @@ DeviceService.prototype.createDevice = function(deviceId, deviceInfo) {
     return req(RequestConfig.generateOptions(RequestConfig.PUT, deviceEndpoint, deviceInfo))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 
@@ -28,6 +33,8 @@ DeviceService.prototype.getDeviceReports = function(deviceId) {
     return req(RequestConfig.generateOptions(RequestConfig.GET, extractEndpoint))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 

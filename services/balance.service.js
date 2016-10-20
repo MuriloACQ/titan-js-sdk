@@ -1,6 +1,7 @@
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
+var Interceptor = require('../config/interceptor.config');
 
 var endpoint = require('../config/env.config').endpoint;
 var balancePath = 'tcs-balances?externalId=';
@@ -12,6 +13,8 @@ BalanceService.prototype.getFullBalance = function (deviceId) {
     return req(RequestConfig.generateOptions(RequestConfig.GET, customerEndpoint))
         .then(function (response) {
             return (JSON.parse(response));
+        }, function (err) {
+            Intercecptor.callInterceptor(err);
         });
 };
 
