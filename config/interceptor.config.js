@@ -26,5 +26,5 @@ function callInterceptor(err){
 }
 
 module.exports.addErrorInterceptor = addErrorInterceptor;
-module.exports.getErrorsInterceptor = getErrorInterceptor;
+module.exports.getErrorsInterceptor = getErrorsInterceptor;
 module.exports.callInterceptor = callInterceptor;
