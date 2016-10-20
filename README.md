@@ -26,6 +26,7 @@ These are the current implemented methos to use:
     - sendSMS
 
 ## Basic Usage
+### Login
 This sdk creates a global variable called `TitanAPI`.
 First of all, you can try to make a login request using `authenticate` method.
 
@@ -40,6 +41,47 @@ TitanAPI.authenticate({
       console.log(err); // Auth error
     });
 ```
+## Other Examples
+### Create Account
+```
+TitanAPI.createAccount({
+	"email": "user@mail.com",
+	"password": "userpassword", //mininum lenght is set to 8. At least 1 special character, 1 number and 1 uppercase letter.
+	"username": "string",
+	"firstName": "string",
+	"lastName": "string",
+	"defaultDDD": "number" //number. By default you can pass 41
+})
+.then(function(response){
+      console.log(response); // Success
+    }, function (err) {
+      console.log(err); // Error
+    });
+```
+### Make a payment
+```
+TitanAPI.createPayment({
+  "selectedPlan" : 'string', //currentPLans: 'Bronze', 'Prata', 'Ouro', 'Platina'.
+      "card" :{
+        "number" : card.number, //ex: 4242424242424242
+        "holder" : card.holder, //holder name
+        "expiration" : {
+          "month" : month, //month expiration: 01 to 12
+          "year" : card.expiration.year //year as YYYY
+        },
+        "brand" : card.brand, //supported brand from cielo
+        "cvc" : card.cvc //cvc
+      },
+	"sourceType" : "cielo" //for now, we only support cielo
+})
+.then(function(response){
+      console.log(response); // Success
+    }, function (err) {
+      console.log(err); // Error
+    });
+```
+
+
 
 ## Error Interceptor
 You can add an error interceptor for our http requests. In a sample way to test you can add this code in your js project.
