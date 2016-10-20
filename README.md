@@ -84,11 +84,11 @@ TitanAPI.createPayment({
 
 
 ## Error Interceptor
-You can add an error interceptor for our http requests. In a sample way to test you can add this code in your js project.
+You can add an error interceptor for our http requests. In a sample way to test you can add this code in your js project. It work as a list of interceptors, so you can add as many as you want.
 
 ```
     //you must add the err parameter.
-    TitanAPI.setErrorInterceptor(function(err){
+    TitanAPI.addErrorInterceptor(function(err){
         console.log(err);
     });
 ```
