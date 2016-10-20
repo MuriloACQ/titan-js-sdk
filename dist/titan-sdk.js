@@ -30825,6 +30825,10 @@ function removeAccessToken() {
     accessToken = null;
 }
 
+function getAccessToken() {
+    return accessToken;
+}
+
 
 function generateOptions(methodType, url, body, customHeaders) {
     var headers = {};
@@ -30844,6 +30848,7 @@ var PUT = 'PUT';
 var GET = 'GET';
 
 module.exports.setAccessToken = setAccessToken;
+module.exports.getAccessToken = getAccessToken;
 module.exports.removeAccessToken = removeAccessToken;
 module.exports.POST = POST;
 module.exports.PUT = PUT;
@@ -30878,6 +30883,7 @@ module.exports.generateOptions = generateOptions;
 
     TitanAPI.prototype.setAccessToken = RequestConfig.setAccessToken;
     TitanAPI.prototype.removeAccessToken = RequestConfig.removeAccessToken;
+    TitanAPI.prototype.getAccessToken = RequestConfig.getAccessToken;
 
     TitanAPI.prototype.authenticate = authService.auth;
     TitanAPI.prototype.refreshToken = authService.refreshToken;
@@ -70661,16 +70667,18 @@ var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 
 var endpoint = require('../config/env.config').endpoint;
-var smsPath = 'v2/sms';
+var sendSmsPath = 'v2/sms';
+
 function SMSService() {
 }
+
 
 function send(smsInfo) {
     return $http.post(endpoint, smsInfo);
 }
 
 SMSService.prototype.sendSMS = function(smsInfo){
-    var smsEndpoint = endpoint + smsPath;
+    var smsEndpoint = endpoint + sendSmsPath;
 
     return req(RequestConfig.generateOptions(RequestConfig.POST, smsEndpoint, smsInfo))
         .then(function (response) {
