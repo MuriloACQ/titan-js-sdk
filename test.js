@@ -1,7 +1,7 @@
 const queryString = require('query-string');
 var parsed = {};
-parsed.foo = 'unicorn';
-parsed.ilike = 'pizza';
+parsed.foo = undefined;
+parsed.ilike = undefined;
 
 const stringified = queryString.stringify(parsed);
 console.log(stringified);
