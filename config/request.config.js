@@ -1,7 +1,11 @@
 'use strict';
-
 var accessToken = null;
 
+var jwtDecode = require('jwt-decode');
+
+function getTokenData(){
+    return jwtDecode(accessToken);
+}
 
 function setAccessToken(aToken) {
     accessToken = aToken;
@@ -39,4 +43,5 @@ module.exports.removeAccessToken = removeAccessToken;
 module.exports.POST = POST;
 module.exports.PUT = PUT;
 module.exports.GET = GET;
+module.exports.getTokenData = getTokenData;
 module.exports.generateOptions = generateOptions;

@@ -32,6 +32,7 @@
     TitanAPI.prototype.setAccessToken = RequestConfig.setAccessToken;
     TitanAPI.prototype.removeAccessToken = RequestConfig.removeAccessToken;
     TitanAPI.prototype.getAccessToken = RequestConfig.getAccessToken;
+    TitanAPI.prototype.getTokenData = RequestConfig.getTokenData;
 
     TitanAPI.prototype.authenticate = authService.auth;
     TitanAPI.prototype.refreshToken = authService.refreshToken;
@@ -49,8 +50,6 @@
     TitanAPI.prototype.createPayment = paymentService.createPayment;
 
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
-
-
 
 
     window.TitanAPI = new TitanAPI();
