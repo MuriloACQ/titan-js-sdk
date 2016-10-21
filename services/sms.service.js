@@ -18,7 +18,7 @@ SMSService.prototype.sendSMS = function (smsInfo) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -36,7 +36,7 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
         null, {range: 'items ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
         return (JSON.parse(response));
     }, function (err) {
-        Intercecptor.callInterceptor(err);
+        Interceptor.callInterceptor(err);
         throw err;
     });
 };

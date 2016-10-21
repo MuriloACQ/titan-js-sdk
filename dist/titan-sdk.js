@@ -70869,7 +70869,7 @@ arguments[4][168][0].apply(exports,arguments)
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
-var Intercecptor = require('../config/interceptor.config');
+var Interceptor = require('../config/interceptor.config');
 
 var endpoint = require('../config/env.config').endpoint;
 var authPath = 'auth';
@@ -70894,7 +70894,7 @@ AuthService.prototype.auth = function (credentials, saveToken) {
             }
             return parsedResponse;
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -70913,7 +70913,7 @@ AuthService.prototype.refreshToken = function (tokens, saveToken) {
             }
             return parsedResponse;
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -70936,7 +70936,7 @@ BalanceService.prototype.getFullBalance = function (deviceId) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -70959,7 +70959,7 @@ DeviceService.prototype.getDevice = function (deviceId) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -70970,7 +70970,7 @@ DeviceService.prototype.createDevice = function (deviceId, deviceInfo) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -70981,7 +70981,7 @@ DeviceService.prototype.getDeviceReports = function (deviceId) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -71005,7 +71005,7 @@ PaymentService.prototype.createPayment = function (paymentInfo) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -71048,7 +71048,7 @@ SMSService.prototype.sendSMS = function (smsInfo) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -71066,7 +71066,7 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
         null, {range: 'items ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
         return (JSON.parse(response));
     }, function (err) {
-        Intercecptor.callInterceptor(err);
+        Interceptor.callInterceptor(err);
         throw err;
     });
 };
@@ -71093,7 +71093,7 @@ UserService.prototype.createAccount = function(account) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -71105,7 +71105,7 @@ UserService.prototype.createUser =function(userInfo){
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -71116,7 +71116,7 @@ UserService.prototype.getUser = function(userId){
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };

@@ -14,7 +14,7 @@ DeviceService.prototype.getDevice = function (deviceId) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -25,7 +25,7 @@ DeviceService.prototype.createDevice = function (deviceId, deviceInfo) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -36,7 +36,7 @@ DeviceService.prototype.getDeviceReports = function (deviceId) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };

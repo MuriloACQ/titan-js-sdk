@@ -14,7 +14,7 @@ UserService.prototype.createAccount = function(account) {
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -26,7 +26,7 @@ UserService.prototype.createUser =function(userInfo){
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -37,7 +37,7 @@ UserService.prototype.getUser = function(userId){
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };

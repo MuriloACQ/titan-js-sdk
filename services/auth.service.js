@@ -1,7 +1,7 @@
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
-var Intercecptor = require('../config/interceptor.config');
+var Interceptor = require('../config/interceptor.config');
 
 var endpoint = require('../config/env.config').endpoint;
 var authPath = 'auth';
@@ -26,7 +26,7 @@ AuthService.prototype.auth = function (credentials, saveToken) {
             }
             return parsedResponse;
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
@@ -45,7 +45,7 @@ AuthService.prototype.refreshToken = function (tokens, saveToken) {
             }
             return parsedResponse;
         }, function (err) {
-            Intercecptor.callInterceptor(err);
+            Interceptor.callInterceptor(err);
             throw err;
         });
 };
