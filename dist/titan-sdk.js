@@ -30850,7 +30850,12 @@ var accessToken = null;
 var jwtDecode = require('jwt-decode');
 
 function getTokenData(){
-    return jwtDecode(accessToken);
+    try{
+        return jwtDecode(accessToken);
+    }catch(err){
+        return {};
+    }
+
 }
 
 function setAccessToken(aToken) {
@@ -71001,7 +71006,10 @@ function PaymentService() {
 PaymentService.prototype.createPayment = function (paymentInfo) {
     paymentInfo.sourceType = 'cielo';
     var paymentEndpoint = endpoint + paymentPath;
-    return req(RequestConfig.generateOptions(RequestConfig.POST, paymentEndpoint, paymentInfo))
+    console.info(paymentInfo);
+    var options = RequestConfig.generateOptions(RequestConfig.POST, paymentEndpoint, JSON.stringify(paymentInfo));
+    console.info(options);
+    return req(options)
         .then(function (response) {
             return (JSON.parse(response));
         }, function (err) {

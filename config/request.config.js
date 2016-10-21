@@ -4,7 +4,12 @@ var accessToken = null;
 var jwtDecode = require('jwt-decode');
 
 function getTokenData(){
-    return jwtDecode(accessToken);
+    try{
+        return jwtDecode(accessToken);
+    }catch(err){
+        return {};
+    }
+
 }
 
 function setAccessToken(aToken) {
