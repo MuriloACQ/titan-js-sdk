@@ -25,8 +25,8 @@
         console.log('Hello World');
     };
 
-    TitanAPI.prototype.setErrorInterceptor = Interceptor.setErrorInterceptor;
-    TitanAPI.prototype.getErrorInterceptor = Interceptor.getErrorInterceptor;
+    TitanAPI.prototype.addErrorInterceptor = Interceptor.addErrorInterceptor;
+    TitanAPI.prototype.getErrorsInterceptor = Interceptor.getErrorsInterceptor;
     TitanAPI.prototype.callInterceptor = Interceptor.callInterceptor;
 
     TitanAPI.prototype.setAccessToken = RequestConfig.setAccessToken;

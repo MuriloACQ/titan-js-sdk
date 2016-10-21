@@ -1,24 +1,30 @@
 'use strict';
 
-var errorInterceptor = null;
+var errorsInterceptor = [];
 
-function setErrorInterceptor(errorFunction) {
-    errorInterceptor = errorFunction;
+function addErrorInterceptor(errorFunction){
+    errorsInterceptor.push(errorFunction);
 }
 
-function getErrorInterceptor(){
-    return errorInterceptor;
+function getErrorsInterceptor(){
+    return errorsInterceptor;
 }
 
 function callInterceptor(err){
-    if(errorInterceptor){
-        errorInterceptor(err);
+    if(errorsInterceptor.length){
+        try{
+            for(var i=0; i< errorsInterceptor.length; i++){
+                errorsInterceptor[i](err);
+            }
+        }catch(err){
+            console.err(err);
+        }
     }else{
         console.warn('No interceptor function has been set');
     }
 
 }
 
-module.exports.setErrorInterceptor = setErrorInterceptor;
-module.exports.getErrorInterceptor = getErrorInterceptor;
+module.exports.addErrorInterceptor = addErrorInterceptor;
+module.exports.getErrorsInterceptor = getErrorsInterceptor;
 module.exports.callInterceptor = callInterceptor;
