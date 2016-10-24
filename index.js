@@ -51,7 +51,7 @@
 
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
     TitanAPI.prototype.listSMS = smsService.list;
-    TitanAPI.prototype.listLastsSMS = smsService.listLasts;
+    TitanAPI.prototype.listLastsSMS = smsService.listLasts.bind(smsService);
 
     window.TitanAPI = new TitanAPI();
 })(window);

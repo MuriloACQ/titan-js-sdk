@@ -30950,7 +30950,7 @@ module.exports.generateOptions = generateOptions;
 
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
     TitanAPI.prototype.listSMS = smsService.list;
-    TitanAPI.prototype.listLastsSMS = smsService.listLasts;
+    TitanAPI.prototype.listLastsSMS = smsService.listLasts.bind(smsService);
 
     window.TitanAPI = new TitanAPI();
 })(window);
@@ -71063,7 +71063,7 @@ SMSService.prototype.sendSMS = function (smsInfo) {
 };
 
 SMSService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
-    var queries = queryString.stringify({initialDate: initialDate, finalDate: finalDate});
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
     var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
     if (queries) {
         smsListEndpoint += '?' + queries;

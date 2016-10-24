@@ -24,7 +24,7 @@ SMSService.prototype.sendSMS = function (smsInfo) {
 };
 
 SMSService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
-    var queries = queryString.stringify({initialDate: initialDate, finalDate: finalDate});
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
     var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
     if (queries) {
         smsListEndpoint += '?' + queries;
