@@ -33,7 +33,7 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
     initialRangeItem = initialRangeItem || '';
 
     return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
-        null, {range: 'items ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
+        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
         return (JSON.parse(response));
     }, function (err) {
         Interceptor.callInterceptor(err);
