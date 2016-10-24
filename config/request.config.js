@@ -27,14 +27,21 @@ function getAccessToken() {
 
 function generateOptions(methodType, url, body, customHeaders) {
     var headers = {};
-    headers['Content-Type'] = 'application/json';
-    if (accessToken) {
+
+    if(customHeaders){
+        headers = customHeaders;
+    }else{
+        headers['Content-Type'] = 'application/json';
+    }
+
+    if (accessToken && !headers['x-token']) {
         headers['x-token'] = accessToken;
     }
+
     return {
         method: methodType,
         uri: url,
-        headers: customHeaders ? customHeaders : headers,
+        headers: headers,
         body: body
     }
 }
