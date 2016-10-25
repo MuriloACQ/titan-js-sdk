@@ -3,15 +3,14 @@ var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 var Interceptor = require('../config/interceptor.config');
 var endpoint = require('../config/env.config').endpoint;
-var paymentPath = 'payments';
-function PaymentService() {
+var ccPath = 'creditcards';
+function CreditCardService() {
 }
 
 
-PaymentService.prototype.createPayment = function (paymentInfo) {
-    paymentInfo.sourceType = 'cielo';
-    var paymentEndpoint = endpoint + paymentPath;
-    var options = RequestConfig.generateOptions(RequestConfig.POST, paymentEndpoint, JSON.stringify(paymentInfo));
+CreditCardService.prototype.getCreditCardsByAccount = function () {
+    var ccEndpoint = endpoint + ccPath;
+    var options = RequestConfig.generateOptions(RequestConfig.GET, ccEndpoint);
     return req(options)
         .then(function (response) {
             return (JSON.parse(response));
@@ -21,4 +20,4 @@ PaymentService.prototype.createPayment = function (paymentInfo) {
         });
 };
 
-module.exports = PaymentService;
+module.exports = CreditCardService;

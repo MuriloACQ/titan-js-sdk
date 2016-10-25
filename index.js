@@ -7,12 +7,14 @@
         UserService = require('./services/user.service'),
         PaymentService = require('./services/payment.service'),
         SMSService = require('./services/sms.service'),
+        CreditCardService = require('./services/creditcard.service'),
         CallService = require('./services/call.service'),
         RequestConfig = require('./config/request.config'),
         Interceptor = require('./config/interceptor.config');
 
     var authService = new AuthService(),
         balanceService = new BalanceService(),
+        creditCardService = new CreditCardService(),
         deviceService = new DeviceService(),
         userService = new UserService(),
         paymentService = new PaymentService(),
@@ -57,6 +59,8 @@
 
     TitanAPI.prototype.listCalls = callService.list;
     TitanAPI.prototype.listLastsCalls = callService.listLasts.bind(callService);
+
+    TitanAPI.prototype.getCreditCardsByAccount = creditCardService.getCreditCardsByAccount;
 
     window.TitanAPI = new TitanAPI();
 })(window);

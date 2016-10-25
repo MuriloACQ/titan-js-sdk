@@ -1,6 +1,6 @@
 {
-  "name": "titanjs-sdk",
-  "version": "0.0.3",
+  "name": "@tunts/titanjs-sdk",
+  "version": "0.0.4",
   "description": "SDK module to integrate Titan API using browserify.",
   "author": "",
   "license": "ISC",
