@@ -5,38 +5,24 @@ var Interceptor = require('../config/interceptor.config');
 var endpoint = require('../config/env.config').endpoint;
 var sendSmsPath = 'v2/sms';
 var devicesPath = 'devices/';
-var listSmsPath = '/sms';
+var listSmsPath = '/calls';
 var queryString = require('./query.service');
 
-function SMSService() {
+function CallService() {
 }
 
-SMSService.prototype.sendSMS = function (smsInfo) {
-    var smsEndpoint = endpoint + sendSmsPath;
-
-    return req(RequestConfig.generateOptions(RequestConfig.POST, smsEndpoint, smsInfo))
-        .then(function (response) {
-            return (JSON.parse(response));
-        }, function (err) {
-            Interceptor.callInterceptor(err);
-            throw err;
-        });
-};
-
-SMSService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
+CallService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
     var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
     var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
     if (queries) {
         smsListEndpoint += queries;
     }
 
-    initialRangeItem = initialRangeItem || '0';
-
+    initialRangeItem = initialRangeItem || '';
     console.log('params', device, initialDate, finalDate, initialRangeItem, finalRangeItem);
     var options = RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
+        null, {range: 'items= ' + initialRangeItem.toString() + '-' + finalRangeItem.toString()});
     console.log(options);
-
     var opts = Object.assign({resolveWithFullResponse: true}, options);
 
     return req(opts).then(function (response) {
@@ -52,8 +38,8 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
     });
 };
 
-SMSService.prototype.listLasts = function (device, qty) {
+CallService.prototype.listLasts = function (device, qty) {
     return this.list(device, null, null, null, qty);
 };
 
-module.exports = SMSService;
+module.exports = CallService;

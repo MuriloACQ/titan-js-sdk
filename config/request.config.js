@@ -42,7 +42,8 @@ function generateOptions(methodType, url, body, customHeaders) {
         method: methodType,
         uri: url,
         headers: headers,
-        body: body
+        body: body,
+        withCredentials: false
     }
 }
 var POST = 'POST';

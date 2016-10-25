@@ -7,6 +7,7 @@
         UserService = require('./services/user.service'),
         PaymentService = require('./services/payment.service'),
         SMSService = require('./services/sms.service'),
+        CallService = require('./services/call.service'),
         RequestConfig = require('./config/request.config'),
         Interceptor = require('./config/interceptor.config');
 
@@ -15,8 +16,9 @@
         deviceService = new DeviceService(),
         userService = new UserService(),
         paymentService = new PaymentService(),
-        smsService = new SMSService()
-;
+        smsService = new SMSService(),
+        callService = new CallService();
+
     function TitanAPI() {
 
     }
@@ -52,6 +54,9 @@
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
     TitanAPI.prototype.listSMS = smsService.list;
     TitanAPI.prototype.listLastsSMS = smsService.listLasts.bind(smsService);
+
+    TitanAPI.prototype.listCalls = callService.list;
+    TitanAPI.prototype.listLastsCalls = callService.listLasts.bind(callService);
 
     window.TitanAPI = new TitanAPI();
 })(window);
