@@ -23,6 +23,29 @@ SMSService.prototype.sendSMS = function (smsInfo) {
         });
 };
 
+SMSService.prototype.getInfo = function (device, initialDate, finalDate) {
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
+    var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
+    if (queries) {
+        smsListEndpoint += queries;
+    }
+
+    return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint, null)).then(function (response) {
+        var list = JSON.parse(response);
+        var result = {
+            total: list.length,
+            totalPrice: 0
+        };
+        list.forEach(function (item) {
+            result.totalPrice += Number(item.price);
+        });
+        return result;
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
+};
+
 SMSService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
     var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
     var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;

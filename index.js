@@ -56,9 +56,11 @@
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
     TitanAPI.prototype.listSMS = smsService.list;
     TitanAPI.prototype.listLastsSMS = smsService.listLasts.bind(smsService);
+    TitanAPI.prototype.getSmsInfo = smsService.getInfo;
 
     TitanAPI.prototype.listCalls = callService.list;
     TitanAPI.prototype.listLastsCalls = callService.listLasts.bind(callService);
+    TitanAPI.prototype.getCallsInfo = callService.getInfo;
 
     TitanAPI.prototype.getCreditCardsByAccount = creditCardService.getCreditCardsByAccount;
 
