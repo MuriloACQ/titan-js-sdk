@@ -70971,9 +70971,8 @@ var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 var Interceptor = require('../config/interceptor.config');
 var endpoint = require('../config/env.config').endpoint;
-var sendSmsPath = 'v2/sms';
 var devicesPath = 'devices/';
-var listSmsPath = '/calls';
+var listCallsPath = '/calls';
 var queryString = require('./query.service');
 
 function CallService() {
@@ -70981,16 +70980,14 @@ function CallService() {
 
 CallService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
     var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
-    var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
+    var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;
     if (queries) {
-        smsListEndpoint += queries;
+        callsListEndpoint += queries;
     }
 
-    initialRangeItem = initialRangeItem || '';
-    console.log('params', device, initialDate, finalDate, initialRangeItem, finalRangeItem);
-    var options = RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem.toString() + '-' + finalRangeItem.toString()});
-    console.log(options);
+    initialRangeItem = initialRangeItem || '0';
+    var options = RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint,
+        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
     var opts = Object.assign({resolveWithFullResponse: true}, options);
 
     return req(opts).then(function (response) {
@@ -71007,7 +71004,22 @@ CallService.prototype.list = function (device, initialDate, finalDate, initialRa
 };
 
 CallService.prototype.listLasts = function (device, qty) {
-    return this.list(device, null, null, null, qty);
+    var initialDate = null, finalDate = null, initialRangeItem = null, finalRangeItem = 0;
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
+    var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;
+    if (queries) {
+        callsListEndpoint += queries;
+    }
+
+    initialRangeItem = initialRangeItem || '0';
+
+    return req(RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint,
+        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
+        return JSON.parse(response);
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
 };
 
 module.exports = CallService;
@@ -71156,10 +71168,8 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
 
     initialRangeItem = initialRangeItem || '0';
 
-    console.log('params', device, initialDate, finalDate, initialRangeItem, finalRangeItem);
     var options = RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
         null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
-    console.log(options);
 
     var opts = Object.assign({resolveWithFullResponse: true}, options);
 
@@ -71177,7 +71187,22 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
 };
 
 SMSService.prototype.listLasts = function (device, qty) {
-    return this.list(device, null, null, null, qty);
+    var initialDate = null, finalDate = null, initialRangeItem = null, finalRangeItem = 0;
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
+    var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
+    if (queries) {
+        smsListEndpoint += queries;
+    }
+
+    initialRangeItem = initialRangeItem || '0';
+
+    return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
+        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
+        return JSON.parse(response);
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
 };
 
 module.exports = SMSService;
