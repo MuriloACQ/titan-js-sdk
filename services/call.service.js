@@ -10,6 +10,31 @@ var queryString = require('./query.service');
 function CallService() {
 }
 
+CallService.prototype.getInfo = function (device, initialDate, finalDate) {
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
+    var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;
+    if (queries) {
+        callsListEndpoint += queries;
+    }
+
+    return req(RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint, null)).then(function (response) {
+        var list = JSON.parse(response);
+        var result = {
+            total: list.length,
+            totalPrice: 0,
+            totalTime: 0
+        };
+        list.forEach(function (item) {
+            result.totalPrice += Number(item.call_cost);
+            result.totalTime += Number(item.duration);
+        });
+        return result;
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
+};
+
 CallService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
     var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
     var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;

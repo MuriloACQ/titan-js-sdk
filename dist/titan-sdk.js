@@ -16044,7 +16044,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "C:\\Users\\user\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign"
+      "C:\\Users\\felip\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -16080,7 +16080,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "C:\\Users\\user\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign",
+  "_where": "C:\\Users\\felip\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -30963,9 +30963,11 @@ module.exports.generateOptions = generateOptions;
     TitanAPI.prototype.sendSMS = smsService.sendSMS;
     TitanAPI.prototype.listSMS = smsService.list;
     TitanAPI.prototype.listLastsSMS = smsService.listLasts.bind(smsService);
+    TitanAPI.prototype.getSmsInfo = smsService.getInfo;
 
     TitanAPI.prototype.listCalls = callService.list;
     TitanAPI.prototype.listLastsCalls = callService.listLasts.bind(callService);
+    TitanAPI.prototype.getCallsInfo = callService.getInfo;
 
     TitanAPI.prototype.getCreditCardsByAccount = creditCardService.getCreditCardsByAccount;
 
@@ -31869,8 +31871,8 @@ function _setExports(ndebug) {
 
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
-}).call(this,{"isBuffer":require("../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
-},{"../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],180:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
+},{"../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],180:[function(require,module,exports){
 
 /*!
  *  Copyright 2010 LearnBoost <dev@learnboost.com>
@@ -39177,8 +39179,8 @@ CombinedStream.prototype._emitError = function(err) {
   this.emit('error', err);
 };
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"delayed-stream":189,"stream":154,"util":166}],188:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"delayed-stream":189,"stream":154,"util":166}],188:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -39288,8 +39290,8 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98}],189:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98}],189:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -42682,8 +42684,8 @@ module.exports = {
 
 };
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./utils":222,"assert-plus":179,"crypto":58,"http":155,"jsprim":241,"sshpk":302,"util":166}],222:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./utils":222,"assert-plus":179,"crypto":58,"http":155,"jsprim":241,"sshpk":302,"util":166}],222:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -45017,8 +45019,8 @@ var crypto = require('crypto');
 
 module.exports = ns;
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./core":232,"./curve255":233,"./utils":236,"crypto":58,"jsbn":237}],236:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./core":232,"./curve255":233,"./utils":236,"crypto":58,"jsbn":237}],236:[function(require,module,exports){
 "use strict";
 /**
  * @fileOverview
@@ -64847,8 +64849,8 @@ Key._oldVersionDetect = function (obj) {
 	return ([1, 0]);
 };
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./algs":285,"./dhe":287,"./ed-compat":288,"./errors":289,"./fingerprint":290,"./formats/auto":291,"./formats/pem":293,"./formats/pkcs1":294,"./formats/pkcs8":295,"./formats/rfc4253":296,"./formats/ssh":298,"./formats/ssh-private":297,"./private-key":304,"./signature":305,"./utils":307,"assert-plus":308,"crypto":58}],304:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./algs":285,"./dhe":287,"./ed-compat":288,"./errors":289,"./fingerprint":290,"./formats/auto":291,"./formats/pem":293,"./formats/pkcs1":294,"./formats/pkcs8":295,"./formats/rfc4253":296,"./formats/ssh":298,"./formats/ssh-private":297,"./private-key":304,"./signature":305,"./utils":307,"assert-plus":308,"crypto":58}],304:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -65990,8 +65992,8 @@ function _setExports(ndebug) {
 
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
-}).call(this,{"isBuffer":require("../../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
-},{"../../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],309:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
+},{"../../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],309:[function(require,module,exports){
 'use strict';
 
 function forEach(obj, callback) {
@@ -67969,7 +67971,7 @@ module.exports={
         "spec": ">=2.3.0 <2.4.0",
         "type": "range"
       },
-      "C:\\projects\\titan-js-sdk\\node_modules\\request"
+      "C:\\Users\\felip\\Documents\\GitHub\\titan-js-sdk\\node_modules\\request"
     ]
   ],
   "_from": "tough-cookie@>=2.3.0 <2.4.0",
@@ -68004,7 +68006,7 @@ module.exports={
   "_shasum": "99c77dfbb7d804249e8a299d4cb0fd81fef083fd",
   "_shrinkwrap": null,
   "_spec": "tough-cookie@~2.3.0",
-  "_where": "C:\\projects\\titan-js-sdk\\node_modules\\request",
+  "_where": "C:\\Users\\felip\\Documents\\GitHub\\titan-js-sdk\\node_modules\\request",
   "author": {
     "name": "Jeremy Stashewsky",
     "email": "jstashewsky@salesforce.com"
@@ -70978,6 +70980,31 @@ var queryString = require('./query.service');
 function CallService() {
 }
 
+CallService.prototype.getInfo = function (device, initialDate, finalDate) {
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
+    var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;
+    if (queries) {
+        callsListEndpoint += queries;
+    }
+
+    return req(RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint, null)).then(function (response) {
+        var list = JSON.parse(response);
+        var result = {
+            total: list.length,
+            totalPrice: 0,
+            totalTime: 0
+        };
+        list.forEach(function (item) {
+            result.totalPrice += Number(item.call_cost);
+            result.totalTime += Number(item.duration);
+        });
+        return result;
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
+};
+
 CallService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
     var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
     var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;
@@ -71157,6 +71184,29 @@ SMSService.prototype.sendSMS = function (smsInfo) {
             Interceptor.callInterceptor(err);
             throw err;
         });
+};
+
+SMSService.prototype.getInfo = function (device, initialDate, finalDate) {
+    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
+    var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
+    if (queries) {
+        smsListEndpoint += queries;
+    }
+
+    return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint, null)).then(function (response) {
+        var list = JSON.parse(response);
+        var result = {
+            total: list.length,
+            totalPrice: 0
+        };
+        list.forEach(function (item) {
+            result.totalPrice += Number(item.price);
+        });
+        return result;
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
 };
 
 SMSService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
