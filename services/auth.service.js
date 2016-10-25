@@ -2,6 +2,7 @@
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 var Interceptor = require('../config/interceptor.config');
+var user = require('../config/user.config');
 
 var endpoint = require('../config/env.config').endpoint;
 var authPath = 'auth';
@@ -20,6 +21,7 @@ function AuthService() {
 AuthService.prototype.auth = function (credentials, saveToken) {
     return req(RequestConfig.generateOptions(RequestConfig.POST, endpoint + authPath, JSON.stringify(credentials)))
         .then(function (response) {
+            user.setUserEmail(credentials.email);
             var parsedResponse = (JSON.parse(response));
             if (saveToken) {
                 RequestConfig.setAccessToken(parsedResponse.accessToken);
