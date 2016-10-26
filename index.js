@@ -10,6 +10,7 @@
         CreditCardService = require('./services/creditcard.service'),
         CallService = require('./services/call.service'),
         RequestConfig = require('./config/request.config'),
+        UserConfig = require('./config/user.config'),
         Interceptor = require('./config/interceptor.config');
 
     var authService = new AuthService(),
@@ -63,6 +64,9 @@
     TitanAPI.prototype.getCallsInfo = callService.getInfo;
 
     TitanAPI.prototype.getCreditCardsByAccount = creditCardService.getCreditCardsByAccount;
+
+    TitanAPI.prototype.setUserEmail = UserConfig.setUserEmail;
+    TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
 
     window.TitanAPI = new TitanAPI();
 })(window);

@@ -30932,6 +30932,7 @@ module.exports.setUserEmail = setUserEmail;
         CreditCardService = require('./services/creditcard.service'),
         CallService = require('./services/call.service'),
         RequestConfig = require('./config/request.config'),
+        UserConfig = require('./config/user.config'),
         Interceptor = require('./config/interceptor.config');
 
     var authService = new AuthService(),
@@ -30986,9 +30987,12 @@ module.exports.setUserEmail = setUserEmail;
 
     TitanAPI.prototype.getCreditCardsByAccount = creditCardService.getCreditCardsByAccount;
 
+    TitanAPI.prototype.setUserEmail = UserConfig.setUserEmail;
+    TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
+
     window.TitanAPI = new TitanAPI();
 })(window);
-},{"./config/interceptor.config":170,"./config/request.config":171,"./services/auth.service":326,"./services/balance.service":327,"./services/call.service":328,"./services/creditcard.service":329,"./services/device.service":330,"./services/payment.service":331,"./services/sms.service":333,"./services/user.service":334}],174:[function(require,module,exports){
+},{"./config/interceptor.config":170,"./config/request.config":171,"./config/user.config":172,"./services/auth.service":326,"./services/balance.service":327,"./services/call.service":328,"./services/creditcard.service":329,"./services/device.service":330,"./services/payment.service":331,"./services/sms.service":333,"./services/user.service":334}],174:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
