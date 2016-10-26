@@ -71288,18 +71288,23 @@ var accountPath = 'accounts';
 function UserService() {
 }
 
-UserService.prototype.createAccount = function(account) {
+UserService.prototype.createAccount = function (account) {
     var accountEndpoint = endpoint + accountPath;
-    return req(RequestConfig.generateOptions(RequestConfig.POST, accountEndpoint, account))
+
+    var options = RequestConfig.generateOptions(RequestConfig.POST, accountEndpoint, account);
+
+    var opts = Object.assign({json: true}, options);
+
+    return req(opts)
         .then(function (response) {
-            return (JSON.parse(response));
-        }, function (err) {
+            return response;
+        }).catch(function (err) {
             Interceptor.callInterceptor(err);
             throw err;
         });
 };
 
-UserService.prototype.createUser =function(userInfo){
+UserService.prototype.createUser = function (userInfo) {
     userInfo.defaultDDD = 41;
     var userEndpoint = endpoint + userPath;
     return req(RequestConfig.generateOptions(RequestConfig.POST, userEndpoint, userInfo))
@@ -71311,7 +71316,7 @@ UserService.prototype.createUser =function(userInfo){
         });
 };
 
-UserService.prototype.getUser = function(userId){
+UserService.prototype.getUser = function (userId) {
     var userEndpoint = endpoint + userPath + '/' + userId;
     return req(RequestConfig.generateOptions(RequestConfig.GET, userEndpoint))
         .then(function (response) {
