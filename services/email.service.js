@@ -13,14 +13,13 @@ EmailService.prototype.validate = function (token) {
     var queries = queryString.toQueryString({token: token});
     var emailEndpoint = endpoint + emailPath + queries;
 
-    var options = RequestConfig.generateOptions('PATCH', emailEndpoint, {confirmedEmail: true});
+    // var options = RequestConfig.generateOptions('PATCH', emailEndpoint, {confirmedEmail: true});
 
-    var opts = Object.assign({resolveWithFullResponse: true}, options);
-
-    return req(opts).then(function (response) {
-        return {
-            data: JSON.parse(response.body)
-        };
+    // var opts = Object.assign({resolveWithFullResponse: true}, options);
+    return RequestConfig.createRequest(RequestConfig.PATCH, emailEndpoint, {confirmedEmail: true})
+    // return req(opts)
+        .then(function (response) {
+        return response;
     }, function (err) {
         Interceptor.callInterceptor(err);
         throw err;

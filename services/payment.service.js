@@ -15,10 +15,11 @@ PaymentService.prototype.createPayment = function (paymentInfo) {
         paymentInfo.credentials.email = user.getUserEmail();
     }
     var paymentEndpoint = endpoint + paymentPath;
-    var options = RequestConfig.generateOptions(RequestConfig.POST, paymentEndpoint, JSON.stringify(paymentInfo));
-    return req(options)
+    return RequestConfig.createRequest(RequestConfig.POST,paymentEndpoint, paymentInfo)
+    // var options = RequestConfig.generateOptions(RequestConfig.POST, paymentEndpoint, JSON.stringify(paymentInfo));
+    // return req(options)
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;

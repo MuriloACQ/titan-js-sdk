@@ -10,10 +10,12 @@ function CreditCardService() {
 
 CreditCardService.prototype.getCreditCardsByAccount = function () {
     var ccEndpoint = endpoint + ccPath;
-    var options = RequestConfig.generateOptions(RequestConfig.GET, ccEndpoint);
-    return req(options)
+
+    return RequestConfig.createRequest(RequestConfig.GET, ccEndpoint)
+    // var options = RequestConfig.generateOptions(RequestConfig.GET, ccEndpoint);
+    // return req(options)
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;

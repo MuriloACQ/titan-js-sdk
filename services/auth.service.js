@@ -19,14 +19,16 @@ function AuthService() {
  * @return {object} This returns an http response. In case of success it will return an accessToken and refreshToken encapsulated in an object.
  */
 AuthService.prototype.auth = function (credentials, saveToken) {
-    return req(RequestConfig.generateOptions(RequestConfig.POST, endpoint + authPath, JSON.stringify(credentials)))
+
+    return RequestConfig.createRequest(RequestConfig.POST, endpoint + authPath, credentials)
+    // return req(RequestConfig.generateOptions(RequestConfig.POST, endpoint + authPath, JSON.stringify(credentials)))
         .then(function (response) {
+            response = response.data;
             user.setUserEmail(credentials.email);
-            var parsedResponse = (JSON.parse(response));
             if (saveToken) {
-                RequestConfig.setAccessToken(parsedResponse.accessToken);
+                RequestConfig.setAccessToken(response.accessToken);
             }
-            return parsedResponse;
+            return response;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;
@@ -39,13 +41,13 @@ AuthService.prototype.refreshToken = function (tokens, saveToken) {
         'x-token' : tokens['accessToken'],
         'refresh-token' : tokens['refreshToken']
     };
-    return req(RequestConfig.generateOptions(RequestConfig.POST, endpoint + refreshPath, null, customHeaders))
+    return RequestConfig.createRequest(RequestConfig.POST, endpoint + refreshPath, null, customHeaders)
         .then(function (response) {
-            var parsedResponse = (JSON.parse(response));
+            response = response.data;
             if (saveToken) {
-                RequestConfig.setAccessToken(parsedResponse.accessToken);
+                RequestConfig.setAccessToken(response.accessToken);
             }
-            return parsedResponse;
+            return response;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;

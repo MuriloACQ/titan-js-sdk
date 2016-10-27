@@ -17,8 +17,10 @@ CallService.prototype.getInfo = function (device, initialDate, finalDate) {
         callsListEndpoint += queries;
     }
 
-    return req(RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint, null)).then(function (response) {
-        var list = JSON.parse(response);
+    return RequestConfig.createRequest(RequestConfig.GET, callsListEndpoint)
+    // return req(RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint, null))
+        .then(function (response) {
+        var list = response.data;
         var result = {
             total: list.length,
             totalPrice: 0,
@@ -43,15 +45,18 @@ CallService.prototype.list = function (device, initialDate, finalDate, initialRa
     }
 
     initialRangeItem = initialRangeItem || '0';
-    var options = RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
-    var opts = Object.assign({resolveWithFullResponse: true}, options);
-
-    return req(opts).then(function (response) {
+    // var options = RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint,
+    //     null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
+    // var opts = Object.assign({resolveWithFullResponse: true}, options);
+    return RequestConfig.createRequest(RequestConfig.GET, callsListEndpoint, null, {
+        range: 'items= ' + initialRangeItem + '-' + finalRangeItem
+    })
+    // return req(opts)
+    .then(function (response) {
         return {
-            data: JSON.parse(response.body),
+            data: response.data,
             info: {
-                total: response.headers['content-range'].split('/')[1]
+                total: (response.headers['content-range'] || response.headers('content-range')).split('/')[1]
             }
         };
     }, function (err) {
@@ -61,22 +66,7 @@ CallService.prototype.list = function (device, initialDate, finalDate, initialRa
 };
 
 CallService.prototype.listLasts = function (device, qty) {
-    var initialDate = null, finalDate = null, initialRangeItem = null, finalRangeItem = 0;
-    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
-    var callsListEndpoint = endpoint + devicesPath + device + listCallsPath;
-    if (queries) {
-        callsListEndpoint += queries;
-    }
-
-    initialRangeItem = initialRangeItem || '0';
-
-    return req(RequestConfig.generateOptions(RequestConfig.GET, callsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
-        return JSON.parse(response);
-    }, function (err) {
-        Interceptor.callInterceptor(err);
-        throw err;
-    });
+    return this.list(device, null, null, null, qty);
 };
 
 module.exports = CallService;

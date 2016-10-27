@@ -27,9 +27,10 @@ UserService.prototype.createAccount = function (account) {
 UserService.prototype.createUser = function (userInfo) {
     userInfo.defaultDDD = 41;
     var userEndpoint = endpoint + userPath;
-    return req(RequestConfig.generateOptions(RequestConfig.POST, userEndpoint, userInfo))
+    return RequestConfig.createRequest(RequestConfig.POST, userEndpoint, userInfo)
+    // return req(RequestConfig.generateOptions(RequestConfig.POST, userEndpoint, userInfo))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;
@@ -38,9 +39,10 @@ UserService.prototype.createUser = function (userInfo) {
 
 UserService.prototype.getUser = function (userId) {
     var userEndpoint = endpoint + userPath + '/' + userId;
-    return req(RequestConfig.generateOptions(RequestConfig.GET, userEndpoint))
+    return RequestConfig.createRequest(RequestConfig.GET, userEndpoint)
+    // return req(RequestConfig.generateOptions(RequestConfig.GET, userEndpoint))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;

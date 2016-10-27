@@ -29,7 +29,7 @@
     }
 
     TitanAPI.prototype.helloWorld = function () {
-        console.log('Hello World');
+        console.info('Hello World');
     };
 
     TitanAPI.prototype.addErrorInterceptor = Interceptor.addErrorInterceptor;
@@ -73,4 +73,5 @@
     TitanAPI.prototype.validateEmail = emailService.validate;
 
     window.TitanAPI = new TitanAPI();
+
 })(window);
