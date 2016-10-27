@@ -16044,7 +16044,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "C:\\Users\\user\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign"
+      "C:\\Users\\murilo\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -16080,7 +16080,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "C:\\Users\\user\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign",
+  "_where": "C:\\Users\\murilo\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -30931,6 +30931,7 @@ module.exports.setUserEmail = setUserEmail;
         SMSService = require('./services/sms.service'),
         CreditCardService = require('./services/creditcard.service'),
         CallService = require('./services/call.service'),
+        EmailService = require('./services/email.service'),
         RequestConfig = require('./config/request.config'),
         UserConfig = require('./config/user.config'),
         Interceptor = require('./config/interceptor.config');
@@ -30942,7 +30943,8 @@ module.exports.setUserEmail = setUserEmail;
         userService = new UserService(),
         paymentService = new PaymentService(),
         smsService = new SMSService(),
-        callService = new CallService();
+        callService = new CallService(),
+        emailService = new EmailService();
 
     function TitanAPI() {
 
@@ -30990,9 +30992,11 @@ module.exports.setUserEmail = setUserEmail;
     TitanAPI.prototype.setUserEmail = UserConfig.setUserEmail;
     TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
 
+    TitanAPI.prototype.validateEmail = emailService.validate;
+
     window.TitanAPI = new TitanAPI();
 })(window);
-},{"./config/interceptor.config":170,"./config/request.config":171,"./config/user.config":172,"./services/auth.service":326,"./services/balance.service":327,"./services/call.service":328,"./services/creditcard.service":329,"./services/device.service":330,"./services/payment.service":331,"./services/sms.service":333,"./services/user.service":334}],174:[function(require,module,exports){
+},{"./config/interceptor.config":170,"./config/request.config":171,"./config/user.config":172,"./services/auth.service":326,"./services/balance.service":327,"./services/call.service":328,"./services/creditcard.service":329,"./services/device.service":330,"./services/email.service":331,"./services/payment.service":332,"./services/sms.service":334,"./services/user.service":335}],174:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -31890,8 +31894,8 @@ function _setExports(ndebug) {
 
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
-}).call(this,{"isBuffer":require("../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
-},{"../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],181:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
+},{"../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],181:[function(require,module,exports){
 
 /*!
  *  Copyright 2010 LearnBoost <dev@learnboost.com>
@@ -39198,8 +39202,8 @@ CombinedStream.prototype._emitError = function(err) {
   this.emit('error', err);
 };
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"delayed-stream":190,"stream":154,"util":166}],189:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"delayed-stream":190,"stream":154,"util":166}],189:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -39309,8 +39313,8 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98}],190:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98}],190:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -42703,8 +42707,8 @@ module.exports = {
 
 };
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./utils":223,"assert-plus":180,"crypto":58,"http":155,"jsprim":242,"sshpk":303,"util":166}],223:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./utils":223,"assert-plus":180,"crypto":58,"http":155,"jsprim":242,"sshpk":303,"util":166}],223:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -45038,8 +45042,8 @@ var crypto = require('crypto');
 
 module.exports = ns;
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./core":233,"./curve255":234,"./utils":237,"crypto":58,"jsbn":238}],237:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./core":233,"./curve255":234,"./utils":237,"crypto":58,"jsbn":238}],237:[function(require,module,exports){
 "use strict";
 /**
  * @fileOverview
@@ -64868,8 +64872,8 @@ Key._oldVersionDetect = function (obj) {
 	return ([1, 0]);
 };
 
-}).call(this,{"isBuffer":require("../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./algs":286,"./dhe":288,"./ed-compat":289,"./errors":290,"./fingerprint":291,"./formats/auto":292,"./formats/pem":294,"./formats/pkcs1":295,"./formats/pkcs8":296,"./formats/rfc4253":297,"./formats/ssh":299,"./formats/ssh-private":298,"./private-key":305,"./signature":306,"./utils":308,"assert-plus":309,"crypto":58}],305:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./algs":286,"./dhe":288,"./ed-compat":289,"./errors":290,"./fingerprint":291,"./formats/auto":292,"./formats/pem":294,"./formats/pkcs1":295,"./formats/pkcs8":296,"./formats/rfc4253":297,"./formats/ssh":299,"./formats/ssh-private":298,"./private-key":305,"./signature":306,"./utils":308,"assert-plus":309,"crypto":58}],305:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -66011,8 +66015,8 @@ function _setExports(ndebug) {
 
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
-}).call(this,{"isBuffer":require("../../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
-},{"../../../../../../Users/user/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],310:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
+},{"../../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],310:[function(require,module,exports){
 'use strict';
 
 function forEach(obj, callback) {
@@ -67990,7 +67994,7 @@ module.exports={
         "spec": ">=2.3.0 <2.4.0",
         "type": "range"
       },
-      "C:\\projects\\titan-js-sdk\\node_modules\\request"
+      "C:\\tunts\\titan-js-sdk\\node_modules\\request"
     ]
   ],
   "_from": "tough-cookie@>=2.3.0 <2.4.0",
@@ -68025,7 +68029,7 @@ module.exports={
   "_shasum": "99c77dfbb7d804249e8a299d4cb0fd81fef083fd",
   "_shrinkwrap": null,
   "_spec": "tough-cookie@~2.3.0",
-  "_where": "C:\\projects\\titan-js-sdk\\node_modules\\request",
+  "_where": "C:\\tunts\\titan-js-sdk\\node_modules\\request",
   "author": {
     "name": "Jeremy Stashewsky",
     "email": "jstashewsky@salesforce.com"
@@ -71071,7 +71075,7 @@ CallService.prototype.listLasts = function (device, qty) {
 };
 
 module.exports = CallService;
-},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"./query.service":332,"request-promise":273}],329:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"./query.service":333,"request-promise":273}],329:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
@@ -71146,6 +71150,37 @@ var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 var Interceptor = require('../config/interceptor.config');
 var endpoint = require('../config/env.config').endpoint;
+var emailPath = 'email';
+var queryString = require('./query.service');
+
+function EmailService() {
+}
+
+EmailService.prototype.validate = function (token) {
+    var queries = queryString.toQueryString({token: token});
+    var emailEndpoint = endpoint + emailPath + queries;
+
+    var options = RequestConfig.generateOptions('PATCH', emailEndpoint, {confirmedEmail: true});
+
+    var opts = Object.assign({resolveWithFullResponse: true}, options);
+
+    return req(opts).then(function (response) {
+        return {
+            data: JSON.parse(response.body)
+        };
+    }, function (err) {
+        Interceptor.callInterceptor(err);
+        throw err;
+    });
+};
+
+module.exports = EmailService;
+},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"./query.service":333,"request-promise":273}],332:[function(require,module,exports){
+'use strict';
+var req = require('request-promise');
+var RequestConfig = require('../config/request.config');
+var Interceptor = require('../config/interceptor.config');
+var endpoint = require('../config/env.config').endpoint;
 var user = require('../config/user.config');
 var paymentPath = 'payments';
 function PaymentService() {
@@ -71169,7 +71204,7 @@ PaymentService.prototype.createPayment = function (paymentInfo) {
 };
 
 module.exports = PaymentService;
-},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"../config/user.config":172,"request-promise":273}],332:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"../config/user.config":172,"request-promise":273}],333:[function(require,module,exports){
 'use strict';
 const queryString = require('query-string');
 function toQueryString(object) {
@@ -71185,7 +71220,7 @@ function toQueryString(object) {
 }
 
 module.exports.toQueryString = toQueryString;
-},{"query-string":265}],333:[function(require,module,exports){
+},{"query-string":265}],334:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
@@ -71281,7 +71316,7 @@ SMSService.prototype.listLasts = function (device, qty) {
 };
 
 module.exports = SMSService;
-},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"./query.service":332,"request-promise":273}],334:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":170,"../config/request.config":171,"./query.service":333,"request-promise":273}],335:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
