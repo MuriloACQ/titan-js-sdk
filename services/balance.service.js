@@ -10,9 +10,10 @@ function BalanceService() {
 
 BalanceService.prototype.getFullBalance = function (deviceId) {
     var customerEndpoint = endpoint + balancePath + deviceId + '&deviceId=' + deviceId;
-    return req(RequestConfig.generateOptions(RequestConfig.GET, customerEndpoint))
+    return RequestConfig.createRequest(RequestConfig.GET, customerEndpoint)
+    // return req(RequestConfig.generateOptions(RequestConfig.GET, customerEndpoint))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;

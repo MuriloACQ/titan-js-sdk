@@ -14,9 +14,10 @@ function SMSService() {
 SMSService.prototype.sendSMS = function (smsInfo) {
     var smsEndpoint = endpoint + sendSmsPath;
 
-    return req(RequestConfig.generateOptions(RequestConfig.POST, smsEndpoint, smsInfo))
+    return RequestConfig.createRequest(RequestConfig.POST, smsEndpoint, smsInfo)
+    // return req(RequestConfig.generateOptions(RequestConfig.POST, smsEndpoint, smsInfo))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;
@@ -29,21 +30,22 @@ SMSService.prototype.getInfo = function (device, initialDate, finalDate) {
     if (queries) {
         smsListEndpoint += queries;
     }
-
-    return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint, null)).then(function (response) {
-        var list = JSON.parse(response);
-        var result = {
-            total: list.length,
-            totalPrice: 0
-        };
-        list.forEach(function (item) {
-            result.totalPrice += Number(item.price);
+    return RequestConfig.createRequest(RequestConfig.GET, smsListEndpoint, null)
+    // return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint, null))
+        .then(function (response) {
+            var list = response.data;
+            var result = {
+                total: list.length,
+                totalPrice: 0
+            };
+            list.forEach(function (item) {
+                result.totalPrice += Number(item.price);
+            });
+            return result;
+        }, function (err) {
+            Interceptor.callInterceptor(err);
+            throw err;
         });
-        return result;
-    }, function (err) {
-        Interceptor.callInterceptor(err);
-        throw err;
-    });
 };
 
 SMSService.prototype.list = function (device, initialDate, finalDate, initialRangeItem, finalRangeItem) {
@@ -53,41 +55,24 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
         smsListEndpoint += queries;
     }
 
-    var options = RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
-
-    var opts = Object.assign({resolveWithFullResponse: true}, options);
-
-    return req(opts).then(function (response) {
-        return {
-            data: JSON.parse(response.body),
-            info: {
-                total: response.headers['content-range'].split('/')[1]
-            }
-        };
-    }, function (err) {
-        Interceptor.callInterceptor(err);
-        throw err;
-    });
+    return RequestConfig.createRequest(RequestConfig.GET, smsListEndpoint, null, {
+        range: 'items= ' + initialRangeItem + '-' + finalRangeItem
+    })
+        .then(function (response) {
+            return {
+                data: response.data,
+                info: {
+                    total: (response.headers['content-range'] || response.headers('content-range')).split('/')[1]
+                }
+            };
+        }, function (err) {
+            Interceptor.callInterceptor(err);
+            throw err;
+        });
 };
 
 SMSService.prototype.listLasts = function (device, qty) {
-    var initialDate = null, finalDate = null, initialRangeItem = null, finalRangeItem = 0;
-    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
-    var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
-    if (queries) {
-        smsListEndpoint += queries;
-    }
-
-    initialRangeItem = initialRangeItem || '0';
-
-    return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
-        return JSON.parse(response);
-    }, function (err) {
-        Interceptor.callInterceptor(err);
-        throw err;
-    });
+    return this.list(device, null, null, null, qty);
 };
 
 module.exports = SMSService;

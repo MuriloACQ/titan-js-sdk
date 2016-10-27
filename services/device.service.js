@@ -10,9 +10,10 @@ function DeviceService() {
 
 DeviceService.prototype.getDevice = function (deviceId) {
     var deviceEndpoint = endpoint + devicesPath + '/' + deviceId;
-    return req(RequestConfig.generateOptions(RequestConfig.GET, deviceEndpoint))
+    return RequestConfig.createRequest(RequestConfig.GET, deviceEndpoint)
+    // return req(RequestConfig.generateOptions(RequestConfig.GET, deviceEndpoint))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;
@@ -21,9 +22,10 @@ DeviceService.prototype.getDevice = function (deviceId) {
 
 DeviceService.prototype.createDevice = function (deviceId, deviceInfo) {
     var deviceEndpoint = endpoint + devicesPath + '/' + deviceId;
-    return req(RequestConfig.generateOptions(RequestConfig.PUT, deviceEndpoint, deviceInfo))
+    return RequestConfig.createRequest(RequestConfig.PUT, deviceEndpoint, deviceInfo)
+    // return req(RequestConfig.generateOptions(RequestConfig.PUT, deviceEndpoint, deviceInfo))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;
@@ -32,9 +34,10 @@ DeviceService.prototype.createDevice = function (deviceId, deviceInfo) {
 
 DeviceService.prototype.getDeviceReports = function (deviceId) {
     var extractEndpoint = endpoint + devicesPath + '/' + deviceId + '/sms';
-    return req(RequestConfig.generateOptions(RequestConfig.GET, extractEndpoint))
+    return RequestConfig.createRequest(RequestConfig.GET, extractEndpoint)
+    // return req(RequestConfig.generateOptions(RequestConfig.GET, extractEndpoint))
         .then(function (response) {
-            return (JSON.parse(response));
+            return response.data;
         }, function (err) {
             Interceptor.callInterceptor(err);
             throw err;

@@ -93,6 +93,25 @@ You can add an error interceptor for our http requests. In a sample way to test 
     });
 ```
 
+## (Optional): Using $http from angular
+If you use angular in your project, you can load titansdkd after you add angular script. Then the sdk will use $http instead of request-promise. Ex:
+
+This will use $http
+```
+<script src="bower_components/angular/angular.js"></script>
+...
+<script src="bower_components/titan-js-sdk/dist/titan-sdk.js"></script>
+
+```
+
+This will use the default request-promise module
+```
+<script src="bower_components/titan-js-sdk/dist/titan-sdk.js"></script>
+...
+<script src="bower_components/angular/angular.js"></script>
+
+```
+
 ## (Optional) Build your own dist:
     - run npm install.
     - Install browseify: npm install -g browserify
