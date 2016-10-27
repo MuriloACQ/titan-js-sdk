@@ -21,7 +21,8 @@
         userService = new UserService(),
         paymentService = new PaymentService(),
         smsService = new SMSService(),
-        callService = new CallService();
+        callService = new CallService(),
+        emailService = new EmailService();
 
     function TitanAPI() {
 
@@ -69,7 +70,7 @@
     TitanAPI.prototype.setUserEmail = UserConfig.setUserEmail;
     TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
 
-    TitanAPI.prototype.validateEmail = EmailService.validate;
+    TitanAPI.prototype.validateEmail = emailService.validate;
 
     window.TitanAPI = new TitanAPI();
 })(window);
