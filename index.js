@@ -9,6 +9,7 @@
         SMSService = require('./services/sms.service'),
         CreditCardService = require('./services/creditcard.service'),
         CallService = require('./services/call.service'),
+        EmailService = require('./services/email.service'),
         RequestConfig = require('./config/request.config'),
         UserConfig = require('./config/user.config'),
         Interceptor = require('./config/interceptor.config');
@@ -67,6 +68,8 @@
 
     TitanAPI.prototype.setUserEmail = UserConfig.setUserEmail;
     TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
+
+    TitanAPI.prototype.validateEmail = EmailService.validate;
 
     window.TitanAPI = new TitanAPI();
 })(window);
