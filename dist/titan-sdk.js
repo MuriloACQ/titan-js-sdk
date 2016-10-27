@@ -71347,8 +71347,7 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
     }
 
     initialRangeItem = initialRangeItem || '';
-    finalRangeItem = finalRangeItem  || '';
-
+    finalRangeItem = finalRangeItem || '';
     return RequestConfig.createRequest(RequestConfig.GET, smsListEndpoint, null, {
         range: 'items= ' + initialRangeItem + '-' + finalRangeItem
     })
@@ -71366,22 +71365,7 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
 };
 
 SMSService.prototype.listLasts = function (device, qty) {
-    var initialDate = null, finalDate = null, initialRangeItem = null, finalRangeItem = 0;
-    var queries = queryString.toQueryString({initialDate: initialDate, finalDate: finalDate});
-    var smsListEndpoint = endpoint + devicesPath + device + listSmsPath;
-    if (queries) {
-        smsListEndpoint += queries;
-    }
-
-    initialRangeItem = initialRangeItem || '0';
-
-    return req(RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
-        null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem})).then(function (response) {
-        return JSON.parse(response);
-    }, function (err) {
-        Interceptor.callInterceptor(err);
-        throw err;
-    });
+    return this.list(device, null, null, null, qty);
 };
 
 module.exports = SMSService;
