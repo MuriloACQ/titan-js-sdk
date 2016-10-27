@@ -71276,8 +71276,6 @@ SMSService.prototype.list = function (device, initialDate, finalDate, initialRan
         smsListEndpoint += queries;
     }
 
-    initialRangeItem = initialRangeItem || '0';
-
     var options = RequestConfig.generateOptions(RequestConfig.GET, smsListEndpoint,
         null, {range: 'items= ' + initialRangeItem + '-' + finalRangeItem});
 
