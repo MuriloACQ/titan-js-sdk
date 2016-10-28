@@ -66,12 +66,15 @@
     TitanAPI.prototype.getCallsInfo = callService.getInfo;
 
     TitanAPI.prototype.getCreditCardsByAccount = creditCardService.getCreditCardsByAccount;
+    TitanAPI.prototype.setPrimaryCard = creditCardService.setPrimaryCard;
 
     TitanAPI.prototype.setUserEmail = UserConfig.setUserEmail;
     TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
 
     TitanAPI.prototype.validateEmail = emailService.validate;
     TitanAPI.prototype.resendConfirmationEmail = emailService.resendConfirmationEmail;
+
+
 
     window.TitanAPI = new TitanAPI();
 
