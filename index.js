@@ -71,6 +71,7 @@
     TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
 
     TitanAPI.prototype.validateEmail = emailService.validate;
+    TitanAPI.prototype.resendConfirmationEmail = emailService.resendConfirmationEmail;
 
     window.TitanAPI = new TitanAPI();
 

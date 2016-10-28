@@ -31062,6 +31062,7 @@ module.exports.setUserEmail = setUserEmail;
     TitanAPI.prototype.getUserEmail = UserConfig.getUserEmail;
 
     TitanAPI.prototype.validateEmail = emailService.validate;
+    TitanAPI.prototype.resendConfirmationEmail = emailService.resendConfirmationEmail;
 
     window.TitanAPI = new TitanAPI();
 
@@ -71239,6 +71240,18 @@ EmailService.prototype.validate = function (token) {
         Interceptor.callInterceptor(err);
         throw err;
     });
+};
+
+EmailService.prototype.resendConfirmationEmail = function () {
+    var emailEndpoint = endpoint + emailPath;
+
+    return RequestConfig.createRequest(RequestConfig.POST, emailEndpoint, {})
+        .then(function (response) {
+            return response.data;
+        }, function (err) {
+            Interceptor.callInterceptor(err);
+            throw err;
+        });
 };
 
 module.exports = EmailService;

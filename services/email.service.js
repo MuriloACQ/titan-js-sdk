@@ -26,4 +26,16 @@ EmailService.prototype.validate = function (token) {
     });
 };
 
+EmailService.prototype.resendConfirmationEmail = function () {
+    var emailEndpoint = endpoint + emailPath;
+
+    return RequestConfig.createRequest(RequestConfig.POST, emailEndpoint, {})
+        .then(function (response) {
+            return response.data;
+        }, function (err) {
+            Interceptor.callInterceptor(err);
+            throw err;
+        });
+};
+
 module.exports = EmailService;
