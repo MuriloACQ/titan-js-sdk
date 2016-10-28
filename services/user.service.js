@@ -4,6 +4,7 @@ var RequestConfig = require('../config/request.config');
 var Interceptor = require('../config/interceptor.config');
 var endpoint = require('../config/env.config').endpoint;
 var userPath = 'userId';
+var usersPath = 'users';
 var accountPath = 'accounts';
 function UserService() {
 }
@@ -29,6 +30,27 @@ UserService.prototype.createUser = function (userInfo) {
     var userEndpoint = endpoint + userPath;
     return RequestConfig.createRequest(RequestConfig.POST, userEndpoint, userInfo)
     // return req(RequestConfig.generateOptions(RequestConfig.POST, userEndpoint, userInfo))
+        .then(function (response) {
+            return response.data;
+        }, function (err) {
+            Interceptor.callInterceptor(err);
+            throw err;
+        });
+};
+
+UserService.prototype.updateUser = function (userInfo) {
+    if (!userInfo.id)
+        throw 'object must have id property';
+    var params = {};
+    if (userInfo.password) {
+        params.password = userInfo.password;
+    } else {
+        params.email = userInfo.email;
+        params.firstName = userInfo.firstName;
+        params.lastName = userInfo.lastName;
+    }
+    var userEndpoint = endpoint + usersPath + '/' + userInfo.id;
+    return RequestConfig.createRequest(RequestConfig.PATCH, userEndpoint, params)
         .then(function (response) {
             return response.data;
         }, function (err) {

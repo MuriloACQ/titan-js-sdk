@@ -53,6 +53,7 @@
     TitanAPI.prototype.createAccount = userService.createAccount;
     TitanAPI.prototype.getUser = userService.getUser;
     TitanAPI.prototype.createUser = userService.createUser;
+    TitanAPI.prototype.updateUser = userService.updateUser;
 
     TitanAPI.prototype.createPayment = paymentService.createPayment;
 
@@ -73,7 +74,6 @@
 
     TitanAPI.prototype.validateEmail = emailService.validate;
     TitanAPI.prototype.resendConfirmationEmail = emailService.resendConfirmationEmail;
-
 
 
     window.TitanAPI = new TitanAPI();
