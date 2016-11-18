@@ -1,7 +1,7 @@
 'use strict';
 var config = require('../config/env.config');
 var req = require('request-promise');
-var secret = '6Lc2EQcUAAAAAAbhq2P9NkorGs3bjsehHyR-xz43';
+var secret = config.captchaSecret;
 
 function RecaptchaService() {
 }
