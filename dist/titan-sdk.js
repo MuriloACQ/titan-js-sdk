@@ -31003,7 +31003,8 @@ module.exports.setUserEmail = setUserEmail;
         EmailService = require('./services/email.service'),
         RequestConfig = require('./config/request.config'),
         UserConfig = require('./config/user.config'),
-        Interceptor = require('./config/interceptor.config');
+        Interceptor = require('./config/interceptor.config'),
+        RecaptchaService = require('./services/recaptcha.service');
 
     var authService = new AuthService(),
         balanceService = new BalanceService(),
@@ -31013,7 +31014,8 @@ module.exports.setUserEmail = setUserEmail;
         paymentService = new PaymentService(),
         smsService = new SMSService(),
         callService = new CallService(),
-        emailService = new EmailService();
+        emailService = new EmailService(),
+        recaptchaService = new RecaptchaService();
 
     function TitanAPI() {
 
@@ -31066,11 +31068,12 @@ module.exports.setUserEmail = setUserEmail;
     TitanAPI.prototype.validateEmail = emailService.validate;
     TitanAPI.prototype.resendConfirmationEmail = emailService.resendConfirmationEmail;
 
+    TitanAPI.prototype.verifyCaptcha = recaptchaService.verifyCaptcha;
 
     window.TitanAPI = new TitanAPI();
 
 })(window);
-},{"./config/interceptor.config":171,"./config/request.config":172,"./config/user.config":173,"./services/auth.service":327,"./services/balance.service":328,"./services/call.service":329,"./services/creditcard.service":330,"./services/device.service":331,"./services/email.service":332,"./services/payment.service":333,"./services/sms.service":335,"./services/user.service":336}],175:[function(require,module,exports){
+},{"./config/interceptor.config":171,"./config/request.config":172,"./config/user.config":173,"./services/auth.service":327,"./services/balance.service":328,"./services/call.service":329,"./services/creditcard.service":330,"./services/device.service":331,"./services/email.service":332,"./services/payment.service":333,"./services/recaptcha.service":335,"./services/sms.service":336,"./services/user.service":337}],175:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -71321,6 +71324,25 @@ function toQueryString(object) {
 module.exports.toQueryString = toQueryString;
 },{"query-string":266}],335:[function(require,module,exports){
 'use strict';
+var config = require('../config/env.config');
+var req = require('request-promise');
+var secret = '6Lc2EQcUAAAAAAbhq2P9NkorGs3bjsehHyR-xz43';
+
+function RecaptchaService() {
+}
+
+RecaptchaService.prototype.verifyCaptcha = function (responseString) {
+    if (!responseString)
+        throw 'response is required';
+    return req({
+        method: 'GET',
+        url: 'https://www.google.com' + '/recaptcha/api/siteverify?secret=' + secret + '&response=' + responseString
+    });
+};
+
+module.exports = RecaptchaService;
+},{"../config/env.config":169,"request-promise":274}],336:[function(require,module,exports){
+'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
 var Interceptor = require('../config/interceptor.config');
@@ -71400,7 +71422,7 @@ SMSService.prototype.listLasts = function (device, qty) {
 };
 
 module.exports = SMSService;
-},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":334,"request-promise":274}],336:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":334,"request-promise":274}],337:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');

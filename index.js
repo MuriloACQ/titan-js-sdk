@@ -12,7 +12,8 @@
         EmailService = require('./services/email.service'),
         RequestConfig = require('./config/request.config'),
         UserConfig = require('./config/user.config'),
-        Interceptor = require('./config/interceptor.config');
+        Interceptor = require('./config/interceptor.config'),
+        RecaptchaService = require('./services/recaptcha.service');
 
     var authService = new AuthService(),
         balanceService = new BalanceService(),
@@ -22,7 +23,8 @@
         paymentService = new PaymentService(),
         smsService = new SMSService(),
         callService = new CallService(),
-        emailService = new EmailService();
+        emailService = new EmailService(),
+        recaptchaService = new RecaptchaService();
 
     function TitanAPI() {
 
@@ -75,6 +77,7 @@
     TitanAPI.prototype.validateEmail = emailService.validate;
     TitanAPI.prototype.resendConfirmationEmail = emailService.resendConfirmationEmail;
 
+    TitanAPI.prototype.verifyCaptcha = recaptchaService.verifyCaptcha;
 
     window.TitanAPI = new TitanAPI();
 
