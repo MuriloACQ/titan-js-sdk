@@ -16044,7 +16044,7 @@ module.exports={
         "spec": ">=6.0.0 <7.0.0",
         "type": "range"
       },
-      "C:\\Users\\felip\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign"
+      "C:\\Users\\murilo\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -16080,7 +16080,7 @@ module.exports={
   "_shasum": "e4c81e0829cf0a65ab70e998b8232723b5c1bc48",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "C:\\Users\\felip\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign",
+  "_where": "C:\\Users\\murilo\\AppData\\Roaming\\npm\\node_modules\\browserify\\node_modules\\browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -30809,7 +30809,8 @@ function extend() {
 
 },{}],169:[function(require,module,exports){
 module.exports = {
-    endpoint : 'https://api.tunts.net/'
+    endpoint: 'https://api.tunts.net/',
+    captchaSecret: '6Lc2EQcUAAAAAAbhq2P9NkorGs3bjsehHyR-xz43'
 };
 },{}],170:[function(require,module,exports){
 'use strict';
@@ -31004,6 +31005,7 @@ module.exports.setUserEmail = setUserEmail;
         RequestConfig = require('./config/request.config'),
         UserConfig = require('./config/user.config'),
         Interceptor = require('./config/interceptor.config'),
+        PlanService = require('./services/plan.service'),
         RecaptchaService = require('./services/recaptcha.service');
 
     var authService = new AuthService(),
@@ -31015,6 +31017,7 @@ module.exports.setUserEmail = setUserEmail;
         smsService = new SMSService(),
         callService = new CallService(),
         emailService = new EmailService(),
+        planService = new PlanService(),
         recaptchaService = new RecaptchaService();
 
     function TitanAPI() {
@@ -31070,10 +31073,12 @@ module.exports.setUserEmail = setUserEmail;
 
     TitanAPI.prototype.verifyCaptcha = recaptchaService.verifyCaptcha;
 
+    TitanAPI.prototype.getPlans = planService.getPlans;
+
     window.TitanAPI = new TitanAPI();
 
 })(window);
-},{"./config/interceptor.config":171,"./config/request.config":172,"./config/user.config":173,"./services/auth.service":327,"./services/balance.service":328,"./services/call.service":329,"./services/creditcard.service":330,"./services/device.service":331,"./services/email.service":332,"./services/payment.service":333,"./services/recaptcha.service":335,"./services/sms.service":336,"./services/user.service":337}],175:[function(require,module,exports){
+},{"./config/interceptor.config":171,"./config/request.config":172,"./config/user.config":173,"./services/auth.service":327,"./services/balance.service":328,"./services/call.service":329,"./services/creditcard.service":330,"./services/device.service":331,"./services/email.service":332,"./services/payment.service":333,"./services/plan.service":334,"./services/recaptcha.service":336,"./services/sms.service":337,"./services/user.service":338}],175:[function(require,module,exports){
 // Copyright 2011 Mark Cavage <mcavage@gmail.com> All rights reserved.
 
 
@@ -31971,8 +31976,8 @@ function _setExports(ndebug) {
 
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
-}).call(this,{"isBuffer":require("../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
-},{"../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],182:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
+},{"../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],182:[function(require,module,exports){
 
 /*!
  *  Copyright 2010 LearnBoost <dev@learnboost.com>
@@ -39279,8 +39284,8 @@ CombinedStream.prototype._emitError = function(err) {
   this.emit('error', err);
 };
 
-}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"delayed-stream":191,"stream":154,"util":166}],190:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"delayed-stream":191,"stream":154,"util":166}],190:[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -39390,8 +39395,8 @@ function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
 
-}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98}],191:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98}],191:[function(require,module,exports){
 var Stream = require('stream').Stream;
 var util = require('util');
 
@@ -42784,8 +42789,8 @@ module.exports = {
 
 };
 
-}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./utils":224,"assert-plus":181,"crypto":58,"http":155,"jsprim":243,"sshpk":304,"util":166}],224:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./utils":224,"assert-plus":181,"crypto":58,"http":155,"jsprim":243,"sshpk":304,"util":166}],224:[function(require,module,exports){
 // Copyright 2012 Joyent, Inc.  All rights reserved.
 
 var assert = require('assert-plus');
@@ -45119,8 +45124,8 @@ var crypto = require('crypto');
 
 module.exports = ns;
 
-}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./core":234,"./curve255":235,"./utils":238,"crypto":58,"jsbn":239}],238:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./core":234,"./curve255":235,"./utils":238,"crypto":58,"jsbn":239}],238:[function(require,module,exports){
 "use strict";
 /**
  * @fileOverview
@@ -64949,8 +64954,8 @@ Key._oldVersionDetect = function (obj) {
 	return ([1, 0]);
 };
 
-}).call(this,{"isBuffer":require("../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
-},{"../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./algs":287,"./dhe":289,"./ed-compat":290,"./errors":291,"./fingerprint":292,"./formats/auto":293,"./formats/pem":295,"./formats/pkcs1":296,"./formats/pkcs8":297,"./formats/rfc4253":298,"./formats/ssh":300,"./formats/ssh-private":299,"./private-key":306,"./signature":307,"./utils":309,"assert-plus":310,"crypto":58}],306:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")})
+},{"../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"./algs":287,"./dhe":289,"./ed-compat":290,"./errors":291,"./fingerprint":292,"./formats/auto":293,"./formats/pem":295,"./formats/pkcs1":296,"./formats/pkcs8":297,"./formats/rfc4253":298,"./formats/ssh":300,"./formats/ssh-private":299,"./private-key":306,"./signature":307,"./utils":309,"assert-plus":310,"crypto":58}],306:[function(require,module,exports){
 (function (Buffer){
 // Copyright 2015 Joyent, Inc.
 
@@ -66092,8 +66097,8 @@ function _setExports(ndebug) {
 
 module.exports = _setExports(process.env.NODE_NDEBUG);
 
-}).call(this,{"isBuffer":require("../../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
-},{"../../../../../../../AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],311:[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js")},require('_process'))
+},{"../../../../../../Users/murilo/AppData/Roaming/npm/node_modules/browserify/node_modules/is-buffer/index.js":98,"_process":122,"assert":16,"stream":154,"util":166}],311:[function(require,module,exports){
 'use strict';
 
 function forEach(obj, callback) {
@@ -68071,7 +68076,7 @@ module.exports={
         "spec": ">=2.3.0 <2.4.0",
         "type": "range"
       },
-      "C:\\Users\\felip\\Documents\\GitHub\\titan-js-sdk\\node_modules\\request"
+      "C:\\tunts\\titan-js-sdk\\node_modules\\request"
     ]
   ],
   "_from": "tough-cookie@>=2.3.0 <2.4.0",
@@ -68106,7 +68111,7 @@ module.exports={
   "_shasum": "99c77dfbb7d804249e8a299d4cb0fd81fef083fd",
   "_shrinkwrap": null,
   "_spec": "tough-cookie@~2.3.0",
-  "_where": "C:\\Users\\felip\\Documents\\GitHub\\titan-js-sdk\\node_modules\\request",
+  "_where": "C:\\tunts\\titan-js-sdk\\node_modules\\request",
   "author": {
     "name": "Jeremy Stashewsky",
     "email": "jstashewsky@salesforce.com"
@@ -71145,7 +71150,7 @@ CallService.prototype.listLasts = function (device, qty) {
 };
 
 module.exports = CallService;
-},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":334,"request-promise":274}],330:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":335,"request-promise":274}],330:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
@@ -71276,7 +71281,7 @@ EmailService.prototype.resendConfirmationEmail = function () {
 };
 
 module.exports = EmailService;
-},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":334,"request-promise":274}],333:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":335,"request-promise":274}],333:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
@@ -71308,6 +71313,28 @@ PaymentService.prototype.createPayment = function (paymentInfo) {
 module.exports = PaymentService;
 },{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"../config/user.config":173,"request-promise":274}],334:[function(require,module,exports){
 'use strict';
+var RequestConfig = require('../config/request.config');
+var Interceptor = require('../config/interceptor.config');
+
+var endpoint = require('../config/env.config').endpoint;
+var publicPlansPath = 'publicplans';
+
+function PlanService() {}
+
+PlanService.prototype.getPlans = function () {
+    var plansEndpoint = endpoint + publicPlansPath;
+    return RequestConfig.createRequest(RequestConfig.GET, plansEndpoint)
+        .then(function (response) {
+            return response.data;
+        }, function (err) {
+            Interceptor.callInterceptor(err);
+            throw err;
+        });
+};
+
+module.exports = PlanService;
+},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172}],335:[function(require,module,exports){
+'use strict';
 const queryString = require('query-string');
 function toQueryString(object) {
     if(object){
@@ -71322,11 +71349,11 @@ function toQueryString(object) {
 }
 
 module.exports.toQueryString = toQueryString;
-},{"query-string":266}],335:[function(require,module,exports){
+},{"query-string":266}],336:[function(require,module,exports){
 'use strict';
 var config = require('../config/env.config');
 var req = require('request-promise');
-var secret = '6Lc2EQcUAAAAAAbhq2P9NkorGs3bjsehHyR-xz43';
+var secret = config.captchaSecret;
 
 function RecaptchaService() {
 }
@@ -71341,7 +71368,7 @@ RecaptchaService.prototype.verifyCaptcha = function (responseString) {
 };
 
 module.exports = RecaptchaService;
-},{"../config/env.config":169,"request-promise":274}],336:[function(require,module,exports){
+},{"../config/env.config":169,"request-promise":274}],337:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
@@ -71422,7 +71449,7 @@ SMSService.prototype.listLasts = function (device, qty) {
 };
 
 module.exports = SMSService;
-},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":334,"request-promise":274}],337:[function(require,module,exports){
+},{"../config/env.config":169,"../config/interceptor.config":171,"../config/request.config":172,"./query.service":335,"request-promise":274}],338:[function(require,module,exports){
 'use strict';
 var req = require('request-promise');
 var RequestConfig = require('../config/request.config');
